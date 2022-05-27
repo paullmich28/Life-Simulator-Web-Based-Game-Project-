@@ -126,15 +126,19 @@
   font-weight: bold;
 }
 
-.slick-slide {
-  height: 320px;
-  border: 4px solid #F25634;
-  box-sizing: border-box;
+.loadingScreen{
+  text-align: center;
+  justify-content: center;
+  position: absolute;
+  align-items: center;
+  bottom: 50%;
+  width: 100%;
 }
 
-.slick-slide img {
-  height: 100%;
-  width: 100%;
-  border: 2.5px solid white;
-  box-sizing: border-box;
+.titleReady{
+  color:rgb(151, 44, 17);
+}
+
+.ready{
+  margin: 1em;
 }

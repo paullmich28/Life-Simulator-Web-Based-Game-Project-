@@ -1,7 +1,7 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
 
-const IsiNama = ({validation}) => {
+const IsiNama = ({validation1, validation2}) => {
 
   const history = useNavigate();
 
@@ -10,23 +10,34 @@ const IsiNama = ({validation}) => {
     localStorage.setItem("namaKamu",dapetNama);
 
     if(dapetNama){
-      validation = true;
+      validation1 = true;
     }
   }
 
   function getInputJurusan(e){
     const dapetJurusan = e.target.value;
     localStorage.setItem("jurusanKamu",dapetJurusan);
+
+    if(dapetJurusan){
+      validation2 = true;
+    }
   }
 
   function validate(e){
-    if(!validation){
+    if(!validation1 && !validation2){
+      e.preventDefault();
+      alert("Masukkan nama dan jurusan kamu dulu!");
+    }else if(!validation1 && validation2){
       e.preventDefault();
       alert("Masukkan nama kamu dulu!");
-    }else{
-      validation = false;
+    }else if(validation1 && !validation2){
       e.preventDefault();
-      history('/gamepage');
+      alert("Pilih jurusan kamu dulu!");
+    }else{
+      validation1 = false;
+      validation2 = false;
+      e.preventDefault();
+      history('/loading');
     }
   }
 
@@ -36,7 +47,7 @@ const IsiNama = ({validation}) => {
         <input className="inputnyaNi" type="text" placeholder="Masukkan Nama Anda" onChange={getInputNama} /><br />
         <div className="pilihHayu">
           <h4 className="transisiInput">Silahkan Pilih Jurusan Anda.</h4>
-          <select className="pilihanJurusan" defaultValue="Informatika" onChange={getInputJurusan}>
+          <select className="pilihanJurusan" onChange={getInputJurusan}>
             <option value="Informatika">Informatika</option>
             <option value="Sistem Informasi">Sistem Informasi</option>
             <option value="DKV">DKV</option>

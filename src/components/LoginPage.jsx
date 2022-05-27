@@ -10,7 +10,7 @@ const LoginPage = () => {
         <div className="App">
           <h1 className="judul">7-Days UMN</h1>
           <ImageSlider slides={SliderSetting} />
-          <IsiNama validation={false} />
+          <IsiNama validation1={false} validation2={false} />
         </div>
       </div>
     </div>
