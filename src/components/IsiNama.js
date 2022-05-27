@@ -25,13 +25,14 @@ const IsiNama = ({validation}) => {
       alert("Masukkan nama kamu dulu!");
     }else{
       validation = false;
+      e.preventDefault();
       history('/gamepage');
     }
   }
 
   return (
     <div className="formIsi">
-      <form onSubmit={validate}>
+      <form>
         <input className="inputnyaNi" type="text" placeholder="Masukkan Nama Anda" onChange={getInputNama} /><br />
         <div className="pilihHayu">
           <h4 className="transisiInput">Silahkan Pilih Jurusan Anda.</h4>
@@ -43,7 +44,7 @@ const IsiNama = ({validation}) => {
           </select>
         </div>
         <br />
-        <button className="btn btn-dark btn-outline-danger">Let's Go!</button>
+        <button className="btn btn-dark btn-outline-danger" onClick={validate}>Let's Go!</button>
       </form>
     </div>
   )
