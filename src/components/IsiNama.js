@@ -53,6 +53,10 @@ const IsiNama = ({validation1, validation2}) => {
             <option value="Sistem Informasi">Sistem Informasi</option>
             <option value="DKV">DKV</option>
             <option value="Film & Animasi">Film & Animasi</option>
+            <option value="Teknik Elektro">Teknik Elektro</option>
+            <option value="Manajemen">Manajemen</option>
+            <option value="Teknik FIsika">Teknik Fisika</option>
+            <option value="Teknik Komputer">Teknik Komputer</option>
           </select>
         </div>
         <br />
