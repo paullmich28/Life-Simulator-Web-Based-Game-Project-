@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from "react";
-import {PacmanLoader} from "react-spinners";
+import { PacmanLoader } from "react-spinners";
 import { useNavigate } from 'react-router-dom';
 
 const LoadingScreen = () => {
