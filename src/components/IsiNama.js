@@ -48,6 +48,7 @@ const IsiNama = ({validation1, validation2}) => {
         <div className="pilihHayu">
           <h4 className="transisiInput">Silahkan Pilih Jurusan Anda.</h4>
           <select className="pilihanJurusan" onChange={getInputJurusan}>
+            <option value=""></option>
             <option value="Informatika">Informatika</option>
             <option value="Sistem Informasi">Sistem Informasi</option>
             <option value="DKV">DKV</option>
