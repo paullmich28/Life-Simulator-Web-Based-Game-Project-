@@ -48,6 +48,12 @@
   color: rgb(197, 51, 51);
   background-color: #000;
   border-radius: 1em;
+  transition: 0.3s;
+}
+
+.right-arrow:hover{
+  color: #000;
+  background-color: rgb(197, 51, 51);
 }
 
 .left-arrow{
@@ -58,6 +64,12 @@
   background-color: #000;
   border-radius: 1em;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.left-arrow:hover{
+  color: #000;
+  background-color: rgb(197, 51, 51);
 }
 
 .slide{
@@ -141,4 +153,12 @@
 
 .ready{
   margin: 1em;
+  padding: 0.8em;
+  font-weight: bold;
+}
+
+.noU{
+  margin: 1em;
+  padding: 0.8em;
+  font-weight: bold;
 }

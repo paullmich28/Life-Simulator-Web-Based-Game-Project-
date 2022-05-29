@@ -30,8 +30,8 @@ const LoadingScreen = () => {
                 (
                     <>
                         <h1 className="titleReady">Are you ready?</h1>
-                        <button className="ready" onClick={ready} >Yes, Go Ahead!</button>
-                        <button className="noU" onClick={notReady} >No, Go Back!</button>
+                        <button className="ready btn btn-warning btn-outline-danger" onClick={ready} >Yes, Go Ahead!</button>
+                        <button className="noU btn btn-warning btn-outline-danger" onClick={notReady} >No, Go Back!</button>
                     </>
                 )
             }
