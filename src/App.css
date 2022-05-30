@@ -8,9 +8,11 @@
 
 .header2{
   background-image: url("./img/backgroundMenu.jpg");
+  position: absolute;
+  width: 100%;
   background-position: center;
   background-repeat: no-repeat;
-  height: 961px;
+  height: 100%;
   background-size: cover;
   background-origin: content-box;
 }
@@ -191,4 +193,17 @@
 .jurusan{
   text-align: center;
   margin-top: 1em;
+}
+
+.bar{
+  background-color: rgb(2, 2, 138);
+  padding: 1em;
+  position: relative;
+  margin-top: 1em;
+  border-radius: 0.5em;
+}
+
+.progress{
+  margin-top: 2em;
+  margin-bottom: 1em;
 }
