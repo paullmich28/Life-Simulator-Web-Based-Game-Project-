@@ -1,7 +1,7 @@
 .header1{
   background-image: url("./img/backgroundMenu1.jpg");
   background-position: center;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   height: 961px;
   background-size: cover;
 }
@@ -9,9 +9,10 @@
 .header2{
   background-image: url("./img/backgroundMenu.jpg");
   background-position: center;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   height: 961px;
   background-size: cover;
+  background-origin: content-box;
 }
 
 .judul{
@@ -35,6 +36,7 @@
 .image{
   width: 375px;
   height: 400px;
+  margin-top: 1em;
   border-radius: 10px;
   background-color: rgb(2, 2, 138, 0.6);
   padding: 40px;
@@ -161,4 +163,32 @@
   margin: 1em;
   padding: 0.8em;
   font-weight: bold;
+}
+
+.gambarCharYeu{
+  width: 375px;
+  height: 400px;
+  margin-top: 1em;
+  border-radius: 10px;
+  background-color: rgb(2, 2, 138, 0.6);
+  padding: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.headerGamepage{
+  position: relative;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.salam{
+  text-align: center;
+  margin-top: 1em;
+}
+
+.jurusan{
+  text-align: center;
+  margin-top: 1em;
 }
