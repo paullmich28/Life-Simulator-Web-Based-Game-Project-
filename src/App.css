@@ -2,12 +2,36 @@
   background-image: url("./img/backgroundMenu1.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  height: 961px;
+  height: 100%;
+  width: 100%;
+  position: absolute;
   background-size: cover;
 }
 
-.header2{
-  background-image: url("./img/backgroundMenu.jpg");
+.header2pagi{
+  background-image: url("./img/pagiSiang.jpg");
+  position: absolute;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  background-size: cover;
+  background-origin: content-box;
+}
+
+.header2sore{
+  background-image: url("./img/sore.jpg");
+  position: absolute;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  background-size: cover;
+  background-origin: content-box;
+}
+
+.header2malem{
+  background-image: url("./img/malem.jpg");
   position: absolute;
   width: 100%;
   background-position: center;
@@ -145,14 +169,20 @@
 .loadingScreen{
   text-align: center;
   justify-content: center;
-  position: absolute;
+  display: grid;
   align-items: center;
-  bottom: 50%;
-  width: 100%;
+  height: auto;
+  margin-top: 25%;
+}
+
+.readyOrNot{
+  background-color: rgb(2, 2, 138, 0.8);
+  padding: 1em;
+  border-radius: 0.6em;
 }
 
 .titleReady{
-  color:rgb(151, 44, 17);
+  color:white;
 }
 
 .ready{

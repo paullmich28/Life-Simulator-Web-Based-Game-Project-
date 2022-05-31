@@ -24,18 +24,21 @@ const LoadingScreen = () => {
     }
 
     return (
-        <div className="loadingScreen">
-            {
-                loading ? (<PacmanLoader color={"#B42435"} loading={loading} size={40} /> ) : 
-                (
-                    <>
-                        <h1 className="titleReady">Are you ready?</h1>
-                        <button className="ready btn btn-warning btn-outline-danger" onClick={ready} >Yes, Go Ahead!</button>
-                        <button className="noU btn btn-warning btn-outline-danger" onClick={notReady} >No, Go Back!</button>
-                    </>
-                )
-            }
+        <div className="header1">
+            <div className="loadingScreen">
+                {
+                    loading ? (<PacmanLoader color={"#B42435"} loading={loading} size={40} /> ) : 
+                    (
+                        <div className="readyOrNot">
+                            <h1 className="titleReady">Are you ready?</h1>
+                            <button className="ready btn btn-warning btn-outline-danger" onClick={ready} >Yes, Go Ahead!</button>
+                            <button className="noU btn btn-warning btn-outline-danger" onClick={notReady} >No, Go Back!</button>
+                        </div>
+                    )
+                }
+            </div>
         </div>
+        
     )
 }
 
