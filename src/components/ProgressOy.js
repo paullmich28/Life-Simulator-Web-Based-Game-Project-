@@ -8,37 +8,39 @@ const ProgressOy = () => {
   const [belajar, setBelajar] = useState(60);
   const [mabar, setMabar] = useState(60);
 
-  /*function Laper(){
+  function Laper(){
     setMakan(makan - 3);
 
     if(makan < 15){
       alert("Makan dulu gih");
     }
-  } */
+  } 
 
-  /*function Ngantuk(){
+  function Ngantuk(){
     setTuru(turu - 3);
 
     if(turu < 15){
       alert("Tidur dulu gih");
     }
-  }*/
+  }
 
-  /*function BljrReminder(){
+  function BljrReminder(){
     setBelajar(belajar - 3);
 
     if(belajar < 15){
       alert("Belajar gan, nanti ga lulus loh");
     }
-  }*/
+  }
 
-  /*function StressReminder(){
+  function StressReminder(){
     setMabar(mabar - 3);
 
     if(mabar < 15){
       alert("Kebanyakan belajar ya? Main dulu sana");
     }
-  }*/
+  }
+
+  //setInterval(Laper, 2000);
 
   return (
     <div className='bar'>
