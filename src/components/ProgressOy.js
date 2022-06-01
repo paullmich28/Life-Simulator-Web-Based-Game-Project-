@@ -1,12 +1,22 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ProgressBar } from 'react-bootstrap';
+import { FaBookReader } from 'react-icons/fa';
 
 const ProgressOy = () => {
   const [makan, setMakan] = useState(60);
   const [turu, setTuru] = useState(60);
   const [belajar, setBelajar] = useState(60);
   const [mabar, setMabar] = useState(60);
+
+  const [clock, setClock] = useState();
+  
+  useEffect(()=>{
+    setInterval(()=>{
+      const date = new Date();
+      setClock(date.toLocaleTimeString());
+    },1000)
+  },[])
 
   function Laper(){
     setMakan(makan - 3);
@@ -43,11 +53,17 @@ const ProgressOy = () => {
   //setInterval(Laper, 2000);
 
   return (
-    <div className='bar'>
+    <div className="clockAndBar">
+      <div className='jam'>{clock}</div>
+      <div>
+        <FaBookReader className='icon1'/>
+      </div>
+      <div className='bar'>
         <ProgressBar className='progress' variant="success" now={makan} />
         <ProgressBar variant="danger" now={turu} />
         <ProgressBar variant="warning" now={belajar} />
         <ProgressBar variant="info" now={mabar} />
+      </div>
     </div>
     
   )

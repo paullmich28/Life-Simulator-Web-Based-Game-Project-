@@ -225,15 +225,32 @@
   margin-top: 1em;
 }
 
-.bar{
-  background-color: rgb(2, 2, 138);
+.clockAndBar{
+  background-color: rgb(72, 72, 187);
   padding: 1em;
+  padding-left: 3em;
   position: relative;
   margin-top: 1em;
   border-radius: 0.5em;
 }
 
+.bar{
+  margin-left: 1.3em;
+}
+
 .progress{
   margin-top: 2em;
   margin-bottom: 1em;
+}
+
+.jam{
+  position: relative;
+  font-weight: bold;
+  text-align: right;
+  color: white;
+}
+
+.icon1{
+  position: absolute;
+  margin-top: 1.4em;
 }
