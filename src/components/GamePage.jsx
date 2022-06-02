@@ -29,7 +29,6 @@ const GamePage = () => {
 
   const dataHour = useRef(null);
   const dataMnt = useRef(null);
-  const dataSecond = useRef(null);
 
   //Jam
   useEffect(()=>{
