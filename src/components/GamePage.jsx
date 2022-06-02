@@ -3,17 +3,20 @@ import { useState } from 'react';
 import { ProgressBar } from 'react-bootstrap';
 import { FaBookReader, FaHotdog, FaBed, FaGamepad } from 'react-icons/fa';
 import { SliderSetting } from './SliderSetting';
+import { useNavigate } from 'react-router-dom';
 
 const GamePage = () => {
   //Variable progress bar
-  const [makan, setMakan] = useState(60);
-  const [turu, setTuru] = useState(60);
-  const [belajar, setBelajar] = useState(60);
-  const [mabar, setMabar] = useState(60);
+  const [makan, setMakan] = useState(50);
+  const [turu, setTuru] = useState(50);
+  const [belajar, setBelajar] = useState(0);
+  const [mabar, setMabar] = useState(50);
 
   //variable jam
-  const [clockHrs, setClockHrs] = useState(new Date().getHours());
+  const [clockHrs, setClockHrs] = useState(0);
   const [clockMnt, setClockMnt] = useState(0);
+  const [clockHrsAftr, setClockHrsAftr] = useState(JSON.parse(localStorage.getItem("clockHours")));
+  const [clockMntAftr, setClockMntAftr] = useState(JSON.parse(localStorage.getItem("clockMinutes")));
 
   //variable buat ngatur background
   const [background, setBackground] = useState("");
@@ -23,27 +26,59 @@ const GamePage = () => {
   const namaKau = localStorage.getItem("namaKamu");
   const jurusanKau = localStorage.getItem("jurusanKamu");
   const [urlImg, setUrlImg] = useState("");
+  
+  var trueTrigger = JSON.parse(localStorage.getItem("trueTrigger"));
 
   //variabel sapa
   const [sapa, setSapa] = useState("");
 
-  const dataHour = useRef(null);
-  const dataMnt = useRef(null);
+  //variabel buat jam
+  const dataHour = useRef();
+  const dataMnt = useRef();
+
+  //variabel buat navigate
+  const kampusNav = useNavigate();
 
   //Jam
   useEffect(()=>{
     var clock;
     clock = setInterval(()=>{
-      setClockMnt(clockMnt + 10);
-      
-      if(clockMnt > 40){
-        setClockHrs(clockHrs + 1);
-        setClockMnt(0);
-      }
+        if(!trueTrigger){
+          setClockMnt(clockMnt + 10);
 
-      if(clockHrs > 23){
-        setClockHrs(0);
-      }
+          localStorage.setItem("clockHours",clockHrs);
+          localStorage.setItem("clockMinutes",clockMnt);
+      
+          if(clockMnt > 40){
+            setClockHrs(clockHrs + 1);
+            setClockMnt(0);
+          }
+
+          if(clockHrs > 23){
+            setClockHrs(0);
+          }
+        }else if(trueTrigger){
+          setClockMnt(clockMntAftr);
+          setClockMntAftr(clockMntAftr + 10);
+          setClockMnt(clockMnt + 10);
+          setClockHrs(clockHrsAftr);
+
+          localStorage.setItem("clockHours",clockHrs);
+          localStorage.setItem("clockMinutes",clockMnt);
+
+          if(clockMnt > 40){
+            setClockHrsAftr(clockHrsAftr + 1);
+            setClockHrs(clockHrs + 1);
+            setClockMnt(0);
+            setClockMntAftr(0);
+          }
+
+          if(clockHrs > 23){
+            setClockHrs(0);
+            setClockHrsAftr(0);
+          }
+        }
+        
     },7000)
 
     return()=>clearInterval(clock);
@@ -115,12 +150,9 @@ const GamePage = () => {
     }
   }
 
-  function BljrReminder(){
+  function Bljr(){
     setBelajar(belajar - 3);
 
-    if(belajar < 15){
-      alert("Belajar gan, nanti ga lulus loh");
-    }
   }
 
   function StressReminder(){
@@ -142,6 +174,7 @@ const GamePage = () => {
     element.style.setProperty('--rotation',rotationRatio * 360)
   }
 
+  //Analog clock
   useEffect(()=>{
     var jamAnalog = setInterval(function(){
       setClock();
@@ -149,62 +182,71 @@ const GamePage = () => {
       clearInterval(jamAnalog);
     }, 1000);
   })
+
+  function KampusGo(e){
+      kampusNav('/kampus');
+      e.preventDefault();
+      localStorage.setItem("trueTrigger", 1)
+  }
   
 
   return (
     <div className={background}>
       <div className='container'>
         <h2 className="salam">{sapa} {namaKau}</h2>
-        <div className="clockAndBar">
-          <div className='jam'>
-            <div className='hand hour' ref={dataHour}></div>
-            <div className='hand minute' ref={dataMnt}></div>
-            <div className="number number1">1</div>
-            <div className="number number2">2</div>
-            <div className="number number3">3</div>
-            <div className="number number4">4</div>
-            <div className="number number5">5</div>
-            <div className="number number6">6</div>
-            <div className="number number7">7</div>
-            <div className="number number8">8</div>
-            <div className="number number9">9</div>
-            <div className="number number10">10</div>
-            <div className="number number11">11</div>
-            <div className="number number12">12</div>
+        <div className='semuaKecualiChar'>
+          <div className='goto'>
+            <h3 className="labelGo">Go To:</h3>
+            <button className='buttonGo' onClick={KampusGo}>Kampus</button><br />
+            <button className='buttonGo'>Kafe</button>
+            <button className='buttonGo'>Supermarket</button>
           </div>
-          <div className='jurusan'>
-            <h4 className='jurusan'>Jurusan: {jurusanKau}</h4>
+          <div className="clockAndBar">
+            <div className='jam'>
+              <div className='hand hour' ref={dataHour}></div>
+              <div className='hand minute' ref={dataMnt}></div>
+              <div className="number number1">1</div>
+              <div className="number number2">2</div>
+              <div className="number number3">3</div>
+              <div className="number number4">4</div>
+              <div className="number number5">5</div>
+              <div className="number number6">6</div>
+              <div className="number number7">7</div>
+              <div className="number number8">8</div>
+              <div className="number number9">9</div>
+              <div className="number number10">10</div>
+              <div className="number number11">11</div>
+              <div className="number number12">12</div>
+            </div>
+            <div className='jurusan'>
+              <h4 className='jurusan'>Jurusan: {jurusanKau}</h4>
+            </div>
+            <div className='icons'>
+              <FaHotdog className='icon1'/><br />
+              <FaBed className='icon2'/><br />
+              <FaBookReader className='icon3'/><br />
+              <FaGamepad className='icon4'/><br />
+            </div>
+            <div className='bar'>
+              <ProgressBar className='progress' variant="success" now={makan} />
+              <ProgressBar variant="danger" now={turu} />
+              <ProgressBar variant="warning" now={belajar} />
+              <ProgressBar variant="info" now={mabar} />
+            </div>
           </div>
-          <div>
-            <FaHotdog className='icon1'/>
-            <FaBed className='icon2'/>
-            <FaBookReader className='icon3'/>
-            <FaGamepad className='icon4'/>
-          </div>
-          <div className='bar'>
-            <ProgressBar className='progress' variant="success" now={makan} />
-            <ProgressBar variant="danger" now={turu} />
-            <ProgressBar variant="warning" now={belajar} />
-            <ProgressBar variant="info" now={mabar} />
+          <div className='buttons'>
+            <div className='makanDanTuru'>
+              <button className='makanBtn button btn btn-success btn-outline-dark'>Makan</button><br />
+              <button className='turuBtn button btn btn-danger btn-outline-dark'>Tidur</button>
+            </div>
+            <div className='belajarDanMain'>
+              <button className='belajarBtn button btn btn-warning btn-outline-secondary'>Belajar</button><br />
+              <button className='mainBtn button btn btn-info btn-outline-secondary'>Main</button>
+            </div>
           </div>
         </div>
         <div className='headerGamepage' >
           <img src={urlImg} className="gambarCharYeu" alt="char" />
-        </div>
-        <div className='buttons'>
-          <div className='makanDanTuru'>
-            <button className='makanBtn button btn btn-success btn-outline-dark'>Makan</button><br />
-            <button className='turuBtn button btn btn-danger btn-outline-dark'>Tidur</button>
-          </div>
-          <div className='belajarDanMain'>
-            <button className='belajarBtn button btn btn-warning btn-outline-secondary'>Belajar</button><br />
-            <button className='mainBtn button btn btn-info btn-outline-secondary'>Main</button>
-          </div>
-        </div>
-        <div className='buttons'>
-          <div className='pergiYu'>
-            <button className="pergiBtn button btn btn-primary btn-outline-warning">Mau Pergi?</button>
-          </div>
         </div>
       </div>
     </div>

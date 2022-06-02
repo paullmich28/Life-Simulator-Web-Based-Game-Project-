@@ -226,29 +226,29 @@ body{
 .clockAndBar{
   background-color: rgb(72, 72, 187, 0.6);
   padding: 1em;
-  padding-left: 3em;
   position: relative;
   margin-top: 1em;
   width: 100%;
-  border-radius: 0.5em;
 }
 
 .bar{
-  margin-left: 1.5em;
-  margin-right: 1em;
+  margin-left: 2em;
+  margin-right: 2em;
   margin-top: 2em;
   width: auto;
 }
 
 .progress{
   margin-top: 2em;
-  height: 1.8em;
+  height: 1.6em;
   margin-bottom: 1em;
 }
 
 .jam{
   position: relative;
   margin-top: 1em;
+  margin-left: 23em;
+  margin-bottom: 1em;
   width: 150px;
   height: 150px;
   margin-right: 1em;
@@ -320,67 +320,74 @@ body{
 }
 
 .icon1{
-  position: absolute;
+  position: relative;
   width: 1.5em;
+  margin-top: 1.5em;
+  margin-bottom: 1em;
   height: auto;
-  margin-top: 1.4em;
-  right: 77em;
   color: white;
 }
 
 .icon2{
-  position: absolute;
   width: 1.6em;
+  margin-bottom: 1em;
   height: auto;
-  margin-top: 4.2em;
-  right: 77em;
   color: white;
 }
 
 .icon3{
-  position: absolute;
   width: 1.6em;
+  margin-bottom: 1em;
   height: auto;
-  margin-top: 7em;
-  right: 77em;
   color: white;
 }
 
 .icon4{
-  position: absolute;
   width: 1.6em;
   height: auto;
-  margin-top: 9.93em;
-  right: 77em;
   color: white;
 }
 
 .buttons{
-  position: relative;
-}
-
-.makanDanTuru{
-  justify-content: center;
-  margin-left: 25em;
-  height: 0;
-}
-
-.belajarDanMain{
-  margin-right: 25em;
-  text-align: right;
+  justify-content: flex-end;
+  margin-top: 1em;
+  padding: 1em;
+  padding-left: 0;
+  background-color: rgb(72, 72, 187, 0.6);
+  border-top-right-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
 }
 
 .button{
   width: 120px;
-  text-align: center;
+  order: 2;
   padding: 0.4em;
   font-size: 1.2em;
+  margin-top: 1em;
 }
 
-.pergiYu{
-  text-align: center;
+.semuaKecualiChar{
+  display: flex;
 }
 
-.pergiBtn{
-  margin-top: 0;
+.icons{
+  position: absolute;
+}
+
+.goto{
+  margin-top: 1em;
+  background-color: rgb(72, 72, 187, 0.6);
+  padding: 1em;
+  padding-right: 0;
+  border-top-left-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+}
+
+.buttonGo{
+  margin-top: 1em;
+  width: 150px;
+}
+
+.labelGo{
+  color: white;
 }
