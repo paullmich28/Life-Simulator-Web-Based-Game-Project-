@@ -9,14 +9,26 @@ const ProgressOy = () => {
   const [belajar, setBelajar] = useState(60);
   const [mabar, setMabar] = useState(60);
 
-  const [clock, setClock] = useState();
+  const [clockHrs, setClockHrs] = useState(new Date().getHours());
+  const [clockMnt, setClockMnt] = useState(0);
   
   useEffect(()=>{
-    setInterval(()=>{
-      const date = new Date();
-      setClock(date.toLocaleTimeString());
+    var clock;
+    clock = setInterval(()=>{
+      setClockMnt(clockMnt + 10);
+      
+      if(clockMnt > 40){
+        setClockHrs(clockHrs + 1);
+        setClockMnt(0);
+      }
+
+      if(clockHrs === 24){
+        setClockHrs(0);
+      }
     },1000)
-  },[])
+
+    return()=>clearInterval(clock);
+  });
 
   function Laper(){
     setMakan(makan - 3);
@@ -54,7 +66,7 @@ const ProgressOy = () => {
 
   return (
     <div className="clockAndBar">
-      <div className='jam'>{clock}</div>
+      <div className='jam'>{clockHrs < 10 ? "0" + clockHrs : clockHrs} : {clockMnt < 10 ? "0" + clockMnt : clockMnt}</div>
       <div>
         <FaBookReader className='icon1'/>
       </div>
