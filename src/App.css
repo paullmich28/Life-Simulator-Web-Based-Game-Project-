@@ -1,3 +1,7 @@
+body{
+  font-family: 'PF Ronda Seven', sans-serif
+}
+
 .header1{
   background-image: url("./img/backgroundMenu1.jpg");
   background-position: center;
@@ -9,20 +13,9 @@
 }
 
 .header2pagi{
-  background-image: url("./img/pagiSiang.jpg");
-  position: absolute;
+  background-image: url("./img/pagisiangsore.jpeg");
   width: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100%;
-  background-size: cover;
-  background-origin: content-box;
-}
-
-.header2sore{
-  background-image: url("./img/sore.jpg");
   position: absolute;
-  width: 100%;
   background-position: center;
   background-repeat: no-repeat;
   height: 100%;
@@ -31,7 +24,7 @@
 }
 
 .header2malem{
-  background-image: url("./img/malem.jpg");
+  background-image: url("./img/malem.jpeg");
   position: absolute;
   width: 100%;
   background-position: center;
@@ -204,8 +197,6 @@
   border-radius: 10px;
   background-color: rgb(2, 2, 138, 0.6);
   padding: 40px;
-  justify-content: center;
-  align-items: center;
 }
 
 .headerGamepage{
@@ -218,6 +209,11 @@
 .salam{
   text-align: center;
   margin-top: 1em;
+  background-color: rgb(219, 181, 132, 0.6);
+  margin-left: 8.5em;
+  margin-right: 8.5em;
+  padding: 0.3em;
+  border-radius: 0.3em;
 }
 
 .jurusan{
@@ -226,7 +222,7 @@
 }
 
 .clockAndBar{
-  background-color: rgb(72, 72, 187);
+  background-color: rgb(72, 72, 187, 0.6);
   padding: 1em;
   padding-left: 3em;
   position: relative;

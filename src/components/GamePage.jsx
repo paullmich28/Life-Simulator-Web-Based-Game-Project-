@@ -50,11 +50,8 @@ const GamePage = () => {
   useEffect(()=>{
     var setBg = setInterval(function(){
 
-      if(clockHrs >= 5 && clockHrs < 15){
+      if(clockHrs >= 5 && clockHrs < 18){
         setBackground("header2pagi");
-      }
-      else if(clockHrs >= 15 && clockHrs < 18){
-        setBackground("header2sore");
       }
       else if(clockHrs >= 18 || clockHrs < 5){
         setBackground("header2malem");
@@ -147,8 +144,8 @@ const GamePage = () => {
             <ProgressBar variant="info" now={mabar} />
           </div>
         </div>
+        <h2 className="salam">{sapa} {namaKau}</h2>
         <div className='headerGamepage' >
-          <h2 className="salam">{sapa} {namaKau}</h2>
           <img src={urlImg} className="gambarCharYeu" alt="char" />
           <h3 className='jurusan'>Jurusan: {jurusanKau}</h3>
         </div>
