@@ -145,6 +145,17 @@ const GamePage = () => {
           </div>
         </div>
         <h2 className="salam">{sapa} {namaKau}</h2>
+        <div className='buttons'>
+          <div className='makanDanTuru'>
+            <button className='makanBtn button btn btn-success'>Makan</button><br />
+            <button className='turuBtn button btn btn-danger'>Tidur</button>
+          </div>
+          <div className='belajarDanMain'>
+            <button className='belajarBtn button btn btn-warning'>Belajar</button><br />
+            <button className='mainBtn button btn btn-info'>Main</button>
+          </div>
+        </div>
+        
         <div className='headerGamepage' >
           <img src={urlImg} className="gambarCharYeu" alt="char" />
           <h3 className='jurusan'>Jurusan: {jurusanKau}</h3>

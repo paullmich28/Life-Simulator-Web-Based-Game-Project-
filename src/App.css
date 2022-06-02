@@ -251,3 +251,26 @@ body{
   position: absolute;
   margin-top: 1.4em;
 }
+
+.buttons{
+  position: relative;
+  padding: 0.6em;
+}
+
+.makanDanTuru{
+  float: left;
+  margin-left: 20em;
+  margin-top: 10em;
+}
+
+.belajarDanMain{
+  float: right;
+  margin-right: 20em;
+  margin-top: 10em;
+}
+
+.button{
+  margin-top: 0.7em;
+  width: 5em;
+  text-align: center;
+}
