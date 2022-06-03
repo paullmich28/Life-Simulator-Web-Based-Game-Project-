@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import { useState } from 'react';
-import { ProgressBar, Collapse, Popover } from 'react-bootstrap';
 import { FaBookReader, FaHotdog, FaBed, FaGamepad } from 'react-icons/fa';
 import { SliderSetting } from './SliderSetting';
 import { useNavigate } from 'react-router-dom';
-import { MakanNasi, btnEnabled, btnDisabled, MakanKripik, MakanBuah, Tidur, Belajar, MainYu } from './ProgressBar';
+import { MakanNasi, btnDisabled, MakanKripik, MakanBuah, Tidur, Belajar, MainYu } from './ProgressBar';
+import NewsGo from './NewsGo';
 
 const GamePage = () => {
   //variable jam
@@ -285,6 +285,7 @@ const GamePage = () => {
   }
 
 
+
   //20
   //35
   //45
@@ -341,7 +342,7 @@ const GamePage = () => {
               <button className='makanBtn button btn btn-success btn-outline-dark' data-bs-target='#collapseTarget' data-bs-toggle='collapse' id='makanBtn'>Makan</button><br />
               <div className='collapse' id='collapseTarget'>
                 <label><img src={require('../img/Nasi.png')} className='iconMakan' alt='nasiYa'/></label>
-                <button className='buttonNest btn btn-warning' id='nasi'onClick={function(){setTimeout(MakanNasi, 3000);btnDisabled();}}>Nasi</button><br />
+                <button className='buttonNest btn btn-warning' id='nasi'onClick={function(){setTimeout(MakanNasi, 3000); btnDisabled();}}>Nasi</button><br />
                 <label><img src={require('../img/Keripik.png')} className='iconMakan' alt='keripik' /></label>
                 <button className='buttonNest btn btn-warning' id='keripik' onClick={function(){setTimeout(MakanKripik, 1500);btnDisabled();}}>Snack</button><br />
                 <label><img src={require('../img/Buah.png')} className='iconMakan' alt='buah' /></label>
@@ -356,7 +357,12 @@ const GamePage = () => {
           </div>
         </div>
         <div className='headerGamepage' >
-          <img src={urlImg} className="gambarCharYeu" alt="char" />
+          <div className='hape'>
+            <div className='content'>
+              <NewsGo />
+            </div>
+          </div>
+          <img src={urlImg} className="gambarCharYeu" alt="char" id='gambarChar' />
         </div>
       </div>
     </div>

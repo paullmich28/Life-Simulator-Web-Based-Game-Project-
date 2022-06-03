@@ -1,7 +1,3 @@
-import $ from "jquery";
-
-
-
 export function Laper(){
     document.getElementById("makanBar").value -= 5;
     if(document.getElementById("makanBar").value === 15){

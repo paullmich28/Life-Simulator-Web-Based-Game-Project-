@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaHotdog, FaBed, FaGamepad, FaBookReader } from "react-icons/fa";
-import { SliderSetting } from './SliderSetting';
 import { useNavigate } from 'react-router-dom';
 
 const Kampus = () => {
@@ -109,10 +108,10 @@ const Kampus = () => {
             setUrlImg(require('../img/luigiKampus.png'));
             break;
         case "Peach":
-            setUrlImg(SliderSetting[2].imgURL);
+            setUrlImg(require('../img/peachKampus.png'));
             break;
         case "Rosalina":
-            setUrlImg(SliderSetting[3].imgURL);
+            setUrlImg(require('../img/rosalinaKampus.png'));
             break;
     }
   },[namaChar])

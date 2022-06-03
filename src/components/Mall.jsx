@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaHotdog, FaBed, FaGamepad, FaBookReader } from "react-icons/fa";
-import { SliderSetting } from './SliderSetting';
 import { useNavigate } from 'react-router-dom';
 
 const Mall = () => {
@@ -105,16 +104,16 @@ const Mall = () => {
     useEffect(()=>{
       switch(namaChar){
           default:
-              setUrlImg(require('../img/marioKampus.png'));
+              setUrlImg(require('../img/marioMall.png'));
               break;
           case "Luigi":
-              setUrlImg(require('../img/luigiKampus.png'));
+              setUrlImg(require('../img/luigiMall.png'));
               break;
           case "Peach":
-              setUrlImg(SliderSetting[2].imgURL);
+              setUrlImg(require('../img/peachMall.png'));
               break;
           case "Rosalina":
-              setUrlImg(SliderSetting[3].imgURL);
+              setUrlImg(require('../img/rosalinaMall.png'));
               break;
       }
     },[namaChar])

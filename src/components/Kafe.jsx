@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaHotdog, FaBed, FaGamepad, FaBookReader } from "react-icons/fa";
-import { SliderSetting } from './SliderSetting';
 import { useNavigate } from 'react-router-dom';
-import { MakanNasi, btnEnabled, btnDisabled, MakanBuah, Belajar } from './ProgressBar';
+import { MakanNasi, btnDisabled, MakanBuah, Belajar } from './ProgressBar';
 
 const Kafe = () => {
     const dataHour = useRef();
@@ -116,10 +115,10 @@ const Kafe = () => {
               setUrlImg(require('../img/luigiKafe.png'));
               break;
           case "Peach":
-              setUrlImg(SliderSetting[2].imgURL);
+              setUrlImg(require('../img/peachKafe.png'));
               break;
           case "Rosalina":
-              setUrlImg(SliderSetting[3].imgURL);
+              setUrlImg(require('../img/rosalinaKafe.png'));
               break;
       }
     },[namaChar])
@@ -264,7 +263,7 @@ const Kafe = () => {
             </div>
           </div>
           <div className='headerGamepage' >
-            <img src={urlImg} className="gambarCharYeu" alt="char" />
+            <img src={urlImg} className="gambarCharYeu" alt="char" id='gambarChar' />
           </div>
         </div>
       </div>
