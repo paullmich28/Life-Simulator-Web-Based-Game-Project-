@@ -14,7 +14,6 @@
                 </div>
             </div>
         </div>
-    </div>
 
     var hungerStatus = document.getElementById("Makan");
     var sleepyStatus = document.getElementById("Tidur");
