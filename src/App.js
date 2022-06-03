@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Kampus from './components/Kampus';
 import Kafe from './components/Kafe';
 import Mall from './components/Mall';
+import Ending from './components/Ending';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/kampus' element={<Kampus />} />
         <Route path='/kafe' element={<Kafe />} />
         <Route path='/mall' element={<Mall />} />
+        <Route path='/ending' element={<Ending />} />
       </Routes>
     </BrowserRouter>
   );

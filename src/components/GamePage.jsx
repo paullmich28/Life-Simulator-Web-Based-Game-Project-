@@ -23,6 +23,8 @@ const GamePage = () => {
   //variable buat ngatur background
   const [background, setBackground] = useState("");
 
+  const hore = useNavigate();
+
   //variabel karakter, nama, jurusan
   const namaChar = localStorage.getItem("karakter");
   const namaKau = localStorage.getItem("namaKamu");
@@ -97,6 +99,8 @@ const GamePage = () => {
           }else if(counter === 5){
             setHari("Sabtu");
             setCounter(counter + 1);
+          }else if(counter === 6){
+            hore('/ending');
           }
         }
       }else if(trueTrigger){
@@ -164,8 +168,10 @@ const GamePage = () => {
           }else if(counterAftr === 5){
             setHari("Sabtu");
             setHariAftr("Sabtu");
-            setCounter(0);
-            setCounterAftr(0);
+            setCounter(counter + 1);
+            setCounterAftr(counterAftr + 1);
+          }else if(counterAftr === 6){
+            hore('/ending');
           }
         }
       }
