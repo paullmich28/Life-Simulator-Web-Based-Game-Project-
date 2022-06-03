@@ -1,31 +1,31 @@
 <div class="aktivitas container-fluid mb-3 mt-3 text-center">
             <div class="row">
                 <div class="groupBtn col-md-12 mb-2">
-                    <button id="btnMakan" class="btn btn-primary" onclick="makanGambar(); setTimeout(Makan, 2000); disable(); ">Makan & Minum</button>
+                    <button id="btnMakan" class="btn btn-primary" onclick="makanGambar(); setTimeout(makan, 2000); disable(); ">Makan & Minum</button>
                 </div>
                 <div class="groupBtn col-md-12 mb-2">
-                    <button id="btnTidur" class="btn btn-primary" onclick="tidurGambar(); setTimeout(Tidur, 2000); disable();">Tidur</button>
+                    <button id="btnTidur" class="btn btn-primary" onclick="tidurGambar(); setTimeout(tidur, 2000); disable();">Tidur</button>
                 </div>
                 <div class="groupBtn col-md-12 mb-2">
-                    <button id="btnGame" class="btn btn-primary" onclick="gameGambar(); setTimeout(Main, 2000); disable();">Main Game</button>
+                    <button id="btnMain" class="btn btn-primary" onclick="gameGambar(); setTimeout(main, 2000); disable();">Main Game</button>
                 </div>
                 <div class="groupBtn col-md-12 mb-2">
-                    <button id="btnBljr" class="btn btn-primary" onclick="belajarGambar(); setTimeout(Belajar, 2000); disable();">Belajar</button>
+                    <button id="btnBljr" class="btn btn-primary" onclick="belajarGambar(); setTimeout(belajar, 2000); disable();">Belajar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    var hungerStatus = document.getElementById("mangan");
-    var sleepyStatus = document.getElementById("turu");
-    var funStatus = document.getElementById("dolanan");
-    var studyStatus = document.getElementById("sinau");
+    var hungerStatus = document.getElementById("Makan");
+    var sleepyStatus = document.getElementById("Tidur");
+    var funStatus = document.getElementById("Main");
+    var studyStatus = document.getElementById("Bljr");
 
-    function manganGambar(){
+    function makanGambar(){
         document.getElementById("characternya").src = "images/makan.png";
     }
 
-    function Makan(){
+    function makan(){
         hungerStatus.value += 1.5;
         sleepyStatus.value -= 0.5;
         funStatus.value -= 0.5;
@@ -48,7 +48,7 @@
         document.getElementById("characternya").src = "images/tidur.png";
     }
 
-    function Tidur(){
+    function tidur(){
         hungerStatus.value -= 0.5;
         sleepyStatus.value += 1.5;
         funStatus.value -= 0.5;
@@ -71,7 +71,7 @@
         document.getElementById("characternya").src = "images/main.png";
     }
 
-    function Main(){
+    function main(){
         hungerStatus.value -= 0.5;
         sleepyStatus.value -= 0.5;
         funStatus.value += 1.5;
@@ -94,7 +94,7 @@
         document.getElementById("characternya").src = "images/belajar.png";
     }
 
-    function Belajar(){
+    function belajar(){
         hungerStatus.value -= 0.5;
         sleepyStatus.value -= 0.5;
         funStatus.value -= 0.5;
@@ -123,15 +123,15 @@
     }
 
     function enable(){
-        document.getElementById("btnMangan").disabled = false;
-        document.getElementById("btnTuru").disabled = false;
-        document.getElementById("btnDolanan").disabled = false;
-        document.getElementById("btnSinau").disabled = false;
+        document.getElementById("btnMakan").disabled = false;
+        document.getElementById("btnTidur").disabled = false;
+        document.getElementById("btnMain").disabled = false;
+        document.getElementById("btnBljr").disabled = false;
     }
 
     function disable(){
-        document.getElementById("btnMangan").disabled = true;
-        document.getElementById("btnTuru").disabled = true;
-        document.getElementById("btnDolanan").disabled = true;
-        document.getElementById("btnSinau").disabled = true;
+        document.getElementById("btnMakan").disabled = true;
+        document.getElementById("btnTidur").disabled = true;
+        document.getElementById("btnMain").disabled = true;
+        document.getElementById("btnBljr").disabled = true;
     }
