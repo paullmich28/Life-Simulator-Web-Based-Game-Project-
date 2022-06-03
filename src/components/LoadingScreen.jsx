@@ -27,7 +27,7 @@ const LoadingScreen = () => {
         <div className="header1">
             <div className="loadingScreen">
                 {
-                    loading ? (<PacmanLoader color={"#B42435"} loading={loading} size={40} /> ) : 
+                    loading ? (<PacmanLoader loading={loading} size={40} color={'#FFFF00'} /> ) : 
                     (
                         <div className="readyOrNot">
                             <h1 className="titleReady">Are you ready?</h1>
