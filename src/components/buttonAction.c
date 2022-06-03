@@ -15,3 +15,123 @@
             </div>
         </div>
     </div>
+
+    var hungerStatus = document.getElementById("mangan");
+    var sleepyStatus = document.getElementById("turu");
+    var funStatus = document.getElementById("dolanan");
+    var studyStatus = document.getElementById("sinau");
+
+    function manganGambar(){
+        document.getElementById("characternya").src = "images/makan.png";
+    }
+
+    function Makan(){
+        hungerStatus.value += 1.5;
+        sleepyStatus.value -= 0.5;
+        funStatus.value -= 0.5;
+        studyStatus.value -= 0.5;
+
+        enable();
+        balikChar();
+    }
+
+    function laper(){
+        hungerStatus.value -= 1;
+
+        if(hungerStatus.value <= 1){
+            window.alert("Makan dulu gan");
+        }
+    }
+    setInterval(laper, 20000);
+
+    function tidurGambar(){
+        document.getElementById("characternya").src = "images/tidur.png";
+    }
+
+    function Tidur(){
+        hungerStatus.value -= 0.5;
+        sleepyStatus.value += 1.5;
+        funStatus.value -= 0.5;
+        studyStatus.value -= 0.5;
+
+        enable();
+        balikChar();
+    }
+
+    function ngantuk(){
+        sleepyStatus.value -= 1;
+
+        if(sleepyStatus.value <= 1){
+            window.alert("Tidur dulu gan");
+        }
+    }
+    setInterval(ngantuk, 20000);
+
+    function gameGambar(){
+        document.getElementById("characternya").src = "images/main.png";
+    }
+
+    function Main(){
+        hungerStatus.value -= 0.5;
+        sleepyStatus.value -= 0.5;
+        funStatus.value += 1.5;
+        studyStatus.value -= 0.5;
+
+        enable();
+        balikChar();
+    }
+
+    function bosen(){
+        funStatus.value -= 1;
+
+        if(funStatus.value <= 1){
+            window.alert("Mabar dulu gan");
+        }
+    }
+    setInterval(bosen, 20000);
+
+    function belajarGambar(){
+        document.getElementById("characternya").src = "images/belajar.png";
+    }
+
+    function Belajar(){
+        hungerStatus.value -= 0.5;
+        sleepyStatus.value -= 0.5;
+        funStatus.value -= 0.5;
+        studyStatus.value += 1.5;
+
+
+        enable();
+        balikChar();
+    }
+
+    function kurangBljr(){
+        studyStatus.value -= 1;
+
+        if(studyStatus.value <= 1){
+            window.alert("Belajar gih gan");
+        }
+    }
+    setInterval(kurangBljr, 20000);
+
+    function balikChar(){
+        if(charChoice == "laki"){
+            document.getElementById("characternya").src = "images/male.png";
+        }else{
+            document.getElementById("characternya").src = "images/female.png";
+        }
+    }
+
+    function enable(){
+        document.getElementById("btnMangan").disabled = false;
+        document.getElementById("btnTuru").disabled = false;
+        document.getElementById("btnDolanan").disabled = false;
+        document.getElementById("btnSinau").disabled = false;
+    }
+
+    function disable(){
+        document.getElementById("btnMangan").disabled = true;
+        document.getElementById("btnTuru").disabled = true;
+        document.getElementById("btnDolanan").disabled = true;
+        document.getElementById("btnSinau").disabled = true;
+    }
