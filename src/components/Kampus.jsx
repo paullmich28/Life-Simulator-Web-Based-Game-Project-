@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaHotdog, FaBed, FaGamepad, FaBookReader } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import { MakanNasi, disabled, Belajar} from './ProgressBar'
 
 const Kampus = () => {
   const dataHour = useRef();
@@ -208,10 +209,14 @@ const Kampus = () => {
           </div>
           <div className='buttons'>
             <div className='makanDanTuru'>
-              <button className='makanBtn button btn btn-success btn-outline-dark'>Makan</button><br />
+              <button className='makanBtn button btn btn-success btn-outline-dark' data-bs-target='#collapseTarget' data-bs-toggle='collapse' id='makanBtn'>Makan</button><br />
+            </div>
+            <div className='collapse' id='collapseTarget'>
+              <label><img src={require('../img/Nasi.png')} className='iconMakan' alt='nasiYa'/></label>
+              <button className='buttonNest btn btn-warning' id='nasi'onClick={function(){setTimeout(MakanNasi, 3000); disabled();}}>Nasi</button><br />
             </div>
             <div className='belajarDanMain'>
-              <button className='belajarBtn button btn btn-warning btn-outline-secondary'>Belajar</button><br />
+              <button className='belajarBtn button btn btn-warning btn-outline-secondary' id='btnBljr' onClick={function(){setTimeout(Belajar, 3000);disabled()}}>Belajar</button><br />
             </div>
           </div>
         </div>

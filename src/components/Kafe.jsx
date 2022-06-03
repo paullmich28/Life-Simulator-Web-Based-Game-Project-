@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaHotdog, FaBed, FaGamepad, FaBookReader } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
-import { MakanNasi, btnDisabled, MakanBuah, Belajar } from './ProgressBar';
+import { MakanNasi, disabled, MakanBuah, Belajar } from './ProgressBar';
 
 const Kafe = () => {
     const dataHour = useRef();
@@ -252,13 +252,13 @@ const Kafe = () => {
                 <button className='makanBtn button btn btn-success btn-outline-dark' data-bs-target='#collapseTarget' data-bs-toggle='collapse' id='makanBtn'>Makan</button><br />
                 <div className='collapse' id='collapseTarget'>
                   <label><img src={require('../img/Ramen.png')} className='iconMakan' alt='nasiYa'/></label>
-                  <button className='buttonNest btn btn-warning' id='nasi'onClick={function(){setTimeout(MakanNasi, 3000);btnDisabled();}}>Ramen</button><br />
+                  <button className='buttonNest btn btn-warning' id='nasi'onClick={function(){setTimeout(MakanNasi, 3000);disabled();}}>Ramen</button><br />
                   <label><img src={require('../img/Steak.png')} className='iconMakan' alt='buah' /></label>
-                  <button className='buttonNest btn btn-warning' id='buah' onClick={function(){setTimeout(MakanBuah, 3000);btnDisabled();}}>Steak</button><br />
+                  <button className='buttonNest btn btn-warning' id='buah' onClick={function(){setTimeout(MakanBuah, 3000);disabled();}}>Steak</button><br />
                 </div>
               </div>
               <div className='belajarDanMain'>
-                <button className='belajarBtn button btn btn-warning btn-outline-secondary' id='btnBljr' onClick={function(){setTimeout(Belajar, 3000);btnDisabled();}}>Nugas</button><br />
+                <button className='belajarBtn button btn btn-warning btn-outline-secondary' id='btnBljr' onClick={function(){setTimeout(Belajar, 3000);disabled();}}>Nugas</button><br />
               </div>
             </div>
           </div>

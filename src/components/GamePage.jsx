@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { FaBookReader, FaHotdog, FaBed, FaGamepad } from 'react-icons/fa';
 import { SliderSetting } from './SliderSetting';
 import { useNavigate } from 'react-router-dom';
-import { MakanNasi, btnDisabled, MakanKripik, MakanBuah, Tidur, Belajar, MainYu } from './ProgressBar';
+import { MakanNasi, disabled, MakanKripik, MakanBuah, Tidur, Belajar, MainYu } from './ProgressBar';
 import NewsGo from './NewsGo';
 
 const GamePage = () => {
@@ -348,17 +348,17 @@ const GamePage = () => {
               <button className='makanBtn button btn btn-success btn-outline-dark' data-bs-target='#collapseTarget' data-bs-toggle='collapse' id='makanBtn'>Makan</button><br />
               <div className='collapse' id='collapseTarget'>
                 <label><img src={require('../img/Nasi.png')} className='iconMakan' alt='nasiYa'/></label>
-                <button className='buttonNest btn btn-warning' id='nasi'onClick={function(){setTimeout(MakanNasi, 3000); btnDisabled();}}>Nasi</button><br />
+                <button className='buttonNest btn btn-warning' id='nasi'onClick={function(){setTimeout(MakanNasi, 3000); disabled();}}>Nasi</button><br />
                 <label><img src={require('../img/Keripik.png')} className='iconMakan' alt='keripik' /></label>
-                <button className='buttonNest btn btn-warning' id='keripik' onClick={function(){setTimeout(MakanKripik, 1500);btnDisabled();}}>Snack</button><br />
+                <button className='buttonNest btn btn-warning' id='keripik' onClick={function(){setTimeout(MakanKripik, 1500);disabled();}}>Snack</button><br />
                 <label><img src={require('../img/Buah.png')} className='iconMakan' alt='buah' /></label>
-                <button className='buttonNest btn btn-warning' id='buah' onClick={function(){setTimeout(MakanBuah, 2000);btnDisabled();}}>Buah</button><br />
+                <button className='buttonNest btn btn-warning' id='buah' onClick={function(){setTimeout(MakanBuah, 2000);disabled();}}>Buah</button><br />
               </div>
-              <button className='turuBtn button btn btn-danger btn-outline-dark' id='btnTdr' onClick={function(){setTimeout(Tidur, 3000); btnDisabled()}}>Tidur</button>
+              <button className='turuBtn button btn btn-danger btn-outline-dark' id='btnTdr' onClick={function(){setTimeout(Tidur, 3000); disabled()}}>Tidur</button>
             </div>
             <div className='belajarDanMain'>
-              <button className='belajarBtn button btn btn-warning btn-outline-secondary' id='btnBljr' onClick={function(){setTimeout(Belajar, 3000);btnDisabled()}}>Belajar</button><br />
-              <button className='mainBtn button btn btn-info btn-outline-secondary' id='btnMaen' onClick={function(){setTimeout(MainYu, 3000);btnDisabled()}}>Main</button>
+              <button className='belajarBtn button btn btn-warning btn-outline-secondary' id='btnBljr' onClick={function(){setTimeout(Belajar, 3000);disabled()}}>Belajar</button><br />
+              <button className='mainBtn button btn btn-info btn-outline-secondary' id='btnMaen' onClick={function(){setTimeout(MainYu, 3000);disabled()}}>Main</button>
             </div>
           </div>
         </div>

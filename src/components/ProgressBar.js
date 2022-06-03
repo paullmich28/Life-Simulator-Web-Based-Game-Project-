@@ -1,5 +1,5 @@
 export function Laper(){
-    document.getElementById("makanBar").value -= 5;
+    document.getElementById("makanBar").value -= 2;
     if(document.getElementById("makanBar").value === 15){
         window.alert("Makan dulu gih")
     }
@@ -15,7 +15,7 @@ setInterval(()=>{
 },20000);
 
 export function Ngantuk(){
-    document.getElementById("tidurBar").value -= 5;
+    document.getElementById("tidurBar").value -= 2;
     if(document.getElementById("tidurBar").value === 15){
         window.alert("tidur dulu gih!");
     }
@@ -36,7 +36,7 @@ export function Tidur(){
     document.getElementById("mainBar").value -= 10;
     document.getElementById("belajarBar").value -= 6;
 
-    btnEnabled();
+    enabled();
 }
 
 export function MakanNasi(){
@@ -45,7 +45,7 @@ export function MakanNasi(){
     document.getElementById("mainBar").value -= 5;
     document.getElementById("belajarBar").value -= 2;
 
-    btnEnabled();
+    enabled();
 }
 
 export function MakanKripik(){
@@ -54,7 +54,7 @@ export function MakanKripik(){
     document.getElementById("mainBar").value -= 5;
     document.getElementById("belajarBar").value -= 5;
 
-    btnEnabled();
+    enabled();
 }
 
 export function MakanBuah(){
@@ -63,7 +63,7 @@ export function MakanBuah(){
     document.getElementById("mainBar").value -= 5;
     document.getElementById("belajarBar").value += 5;
 
-    btnEnabled();
+    enabled();
 }
 
 export function Belajar(){
@@ -72,12 +72,12 @@ export function Belajar(){
     document.getElementById("tidurBar").value -= 13;
     document.getElementById("mainBar").value -= 15;
 
-    btnEnabled();
+    enabled();
 }
 
 export function KnowledgeDec(){
     if(document.getElementById("belajarBar").value >= 0){
-        document.getElementById("belajarBar").value -= 5;
+        document.getElementById("belajarBar").value -= 2;
     }
 
     if(document.getElementById("belajarBar").value <= 0){
@@ -96,11 +96,11 @@ export function MainYu(){
     document.getElementById("tidurBar").value -= 5;
     document.getElementById("mainBar").value += 30;
 
-    btnEnabled();
+    enabled();
 }
 
 export function Stress(){
-    document.getElementById("mainBar").value -= 5;
+    document.getElementById("mainBar").value -= 2;
     if(document.getElementById("mainBar").value <= 0){
         document.getElementById("mainBar").value = 0;
     }
@@ -114,7 +114,7 @@ setInterval(()=>{
     localStorage.setItem("sanity",document.getElementById("mainBar").value);
 },20000)
 
-export function btnEnabled(){
+export function enabled(){
     document.getElementById("nasi").disabled = false;
     document.getElementById("keripik").disabled = false;
     document.getElementById("buah").disabled = false;
@@ -123,7 +123,7 @@ export function btnEnabled(){
     document.getElementById("btnMaen").disabled = false;
 }
 
-export function btnDisabled(){
+export function disabled(){
     document.getElementById("nasi").disabled = true;
     document.getElementById("keripik").disabled = true;
     document.getElementById("buah").disabled = true;

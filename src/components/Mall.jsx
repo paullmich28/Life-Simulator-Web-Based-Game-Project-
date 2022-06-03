@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaHotdog, FaBed, FaGamepad, FaBookReader } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import { MakanNasi, disabled, MakanBuah, MainYu } from './ProgressBar'
 
 const Mall = () => {
     const dataHour = useRef();
@@ -225,10 +226,16 @@ const Mall = () => {
             </div>
             <div className='buttons'>
               <div className='makanDanTuru'>
-                <button className='makanBtn button btn btn-success btn-outline-dark'>Makan</button><br />
+                <button className='makanBtn button btn btn-success btn-outline-dark' data-bs-target='#collapseTarget' data-bs-toggle='collapse' id='makanBtn'>Makan</button><br />
+              </div>
+              <div className='collapse' id='collapseTarget'>
+                <label><img src={require('../img/Nasi.png')} className='iconMakan' alt='nasiYa'/></label>
+                <button className='buttonNest btn btn-warning' id='nasi'onClick={function(){setTimeout(MakanNasi, 3000); disabled();}}>Nasi</button><br />
+                <label><img src={require('../img/Steak.png')} className='iconMakan' alt='buah' /></label>
+                <button className='buttonNest btn btn-warning' id='buah' onClick={function(){setTimeout(MakanBuah, 3000);disabled();}}>Steak</button><br />
               </div>
               <div className='belajarDanMain'>
-              <button className='mainBtn button btn btn-info btn-outline-secondary'>Main</button><br />
+                <button className='mainBtn button btn btn-info btn-outline-secondary' id='btnMaen' onClick={function(){setTimeout(MainYu, 3000);disabled()}}>Main</button><br />
               </div>
             </div>
           </div>
