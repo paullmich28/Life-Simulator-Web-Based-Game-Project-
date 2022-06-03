@@ -229,9 +229,9 @@ const GamePage = () => {
   //Disable button
   useEffect(()=>{
     var disButton = setInterval(function(){
-      if((clockHrs >= 17 || clockHrs < 7) || hari === "Minggu"){
+      if(clockHrs >= 17 || clockHrs < 7){
         setDisableKmps(true);
-      }else if((clockHrs >= 7 || clockHrs < 17) || hari !== "Minggu"){
+      }else if(clockHrs >= 7 || clockHrs < 17){
         setDisableKmps(false);
       }
 

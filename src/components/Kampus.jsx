@@ -104,10 +104,10 @@ const Kampus = () => {
   useEffect(()=>{
     switch(namaChar){
         default:
-            setUrlImg(SliderSetting[0].imgURL);
+            setUrlImg(require('../img/marioKampus.png'));
             break;
         case "Luigi":
-            setUrlImg(SliderSetting[1].imgURL);
+            setUrlImg(require('../img/luigiKampus.png'));
             break;
         case "Peach":
             setUrlImg(SliderSetting[2].imgURL);

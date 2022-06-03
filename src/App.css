@@ -6,7 +6,8 @@ body{
   background-image: url("./img/backgroundMenu1.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  height: 100%;
+  min-height: 100%;
+  max-height: 200%;
   width: 100%;
   position: absolute;
   background-size: cover;
@@ -193,15 +194,16 @@ body{
 }
 
 .gambarCharYeu{
-  width: 375px;
+  width: auto;
   height: 400px;
   margin-top: 0;
   padding: 40px;
 }
 
 .headerGamepage{
-  position: relative;
-  display: grid;
+  position:relative;
+  margin-left: 5em;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
