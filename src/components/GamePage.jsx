@@ -77,7 +77,7 @@ const GamePage = () => {
           setClockMnt(0);
         }
 
-        if(clockHrs > 23){
+        if(clockHrs >= 24){
           setClockHrs(0);
           if(counter === 0){
             setHari("Senin")
@@ -132,7 +132,7 @@ const GamePage = () => {
           setClockMntAftr(0);
         }
 
-        if(clockHrs > 23){
+        if(clockHrs >= 24){
           setClockHrs(0);
           setClockHrsAftr(0);
           if(counterAftr === 0){
