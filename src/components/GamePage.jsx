@@ -354,7 +354,7 @@ const GamePage = () => {
               <FaGamepad className='icon4'/><br />
             </div>
             <div className='bar'>
-              <ProgressBar className='progress' variant="success" now={makan} />
+              <ProgressBar className='progress' variant="success" now={makan} id="makanBang"/>
               <ProgressBar variant="danger" now={turu} />
               <ProgressBar variant="warning" now={belajar} />
               <ProgressBar variant="info" now={mabar} />
