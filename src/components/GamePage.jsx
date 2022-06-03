@@ -4,6 +4,7 @@ import { ProgressBar } from 'react-bootstrap';
 import { FaBookReader, FaHotdog, FaBed, FaGamepad } from 'react-icons/fa';
 import { SliderSetting } from './SliderSetting';
 import { useNavigate } from 'react-router-dom';
+import NewsUpdate from './NewsUpdate';
 
 const GamePage = () => {
   //Variable progress bar
@@ -293,7 +294,6 @@ const GamePage = () => {
       e.preventDefault();
       localStorage.setItem("trueTrigger", 1)
   }
-  
 
   return (
     <div className={background}>
@@ -356,6 +356,7 @@ const GamePage = () => {
         <div className='headerGamepage' >
           <img src={urlImg} className="gambarCharYeu" alt="char" />
         </div>
+        <NewsUpdate />
       </div>
     </div>
   )
