@@ -305,11 +305,13 @@ const GamePage = () => {
   function KafeGo(e){
     kafeNav('/kafe');
     e.preventDefault();
+    localStorage.setItem("trueTrigger", 1)
   }
 
   function MallGo(e){
     mallNav('/mall');
     e.preventDefault();
+    localStorage.setItem("trueTrigger", 1)
   }
 
   return (

@@ -14,6 +14,8 @@ const Kafe = () => {
 
     const [disableKmps, setDisableKmps] = useState(false);
     const [disableRest, setDisableRest] = useState(false);
+
+    const [background, setBackground] = useState("");
   
     const namaKau = localStorage.getItem("namaKamu");
     const jurusanKau = localStorage.getItem("jurusanKamu");
@@ -107,10 +109,10 @@ const Kafe = () => {
     useEffect(()=>{
       switch(namaChar){
           default:
-              setUrlImg(SliderSetting[0].imgURL);
+              setUrlImg(require('../img/marioKafe.png'));
               break;
           case "Luigi":
-              setUrlImg(SliderSetting[1].imgURL);
+              setUrlImg(require('../img/luigiKafe.png'));
               break;
           case "Peach":
               setUrlImg(SliderSetting[2].imgURL);
@@ -120,7 +122,22 @@ const Kafe = () => {
               break;
       }
     },[namaChar])
+
+    //Background
+    useEffect(()=>{
+      var setBg = setInterval(function(){
   
+        if(clockHrs >= 5 && clockHrs < 18){
+          setBackground("headerKafePagi");
+        }
+        else if(clockHrs >= 18 || clockHrs < 5){
+          setBackground("headerKafeMalem");
+        }
+  
+        clearInterval(setBg);
+      },1000);
+    })
+
     function RumahGo(e){
       rumahNav('/gamepage');
       e.preventDefault();
@@ -184,7 +201,7 @@ const Kafe = () => {
     })
   
     return (
-      <div className='header1'>
+      <div className={background}>
         <div className='container'>
           <h2 className="salam">{sapa} {namaKau}</h2>
           <div className='semuaKecualiChar'>
@@ -235,7 +252,7 @@ const Kafe = () => {
                 <button className='makanBtn button btn btn-success btn-outline-dark'>Makan</button><br />
               </div>
               <div className='belajarDanMain'>
-                <button className='belajarBtn button btn btn-warning btn-outline-secondary'>Belajar</button><br />
+                <button className='belajarBtn button btn btn-warning btn-outline-secondary'>Nugas</button><br />
               </div>
             </div>
           </div>
