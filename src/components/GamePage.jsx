@@ -17,6 +17,13 @@ const GamePage = () => {
   const [clockMnt, setClockMnt] = useState(0);
   const [clockHrsAftr, setClockHrsAftr] = useState(JSON.parse(localStorage.getItem("clockHours")));
   const [clockMntAftr, setClockMntAftr] = useState(JSON.parse(localStorage.getItem("clockMinutes")));
+  const [disableKmps, setDisableKmps] = useState(false);
+  const [disableKafe, setDisableKafe] = useState(false);
+  const [disableMrkt, setDisableMrkt] = useState(false);
+  const [hari, setHari] = useState("Minggu");
+  const [counter, setCounter] = useState(0);
+  const [hariAftr, setHariAftr] = useState(localStorage.getItem("hari"));
+  const [counterAftr, setCounterAftr] = useState(JSON.parse(localStorage.getItem("counter")));
 
   //variable buat ngatur background
   const [background, setBackground] = useState("");
@@ -43,43 +50,120 @@ const GamePage = () => {
   useEffect(()=>{
     var clock;
     clock = setInterval(()=>{
-        if(!trueTrigger){
-          setClockMnt(clockMnt + 10);
+      if(!trueTrigger){
+        setClockMnt(clockMnt + 1.5);
 
-          localStorage.setItem("clockHours",clockHrs);
-          localStorage.setItem("clockMinutes",clockMnt);
+        localStorage.setItem("clockHours",clockHrs);
+        localStorage.setItem("clockMinutes",clockMnt);
+        localStorage.setItem("hari",hari);
+        localStorage.setItem("counter",counter)
       
-          if(clockMnt > 40){
-            setClockHrs(clockHrs + 1);
-            setClockMnt(0);
-          }
+        
 
-          if(clockHrs > 23){
-            setClockHrs(0);
-          }
-        }else if(trueTrigger){
-          setClockMnt(clockMntAftr);
-          setClockMntAftr(clockMntAftr + 10);
-          setClockMnt(clockMnt + 10);
-          setClockHrs(clockHrsAftr);
+        if(clockMnt === 15){
+          setClockHrs(clockHrs + 0.25)
+        }
 
-          localStorage.setItem("clockHours",clockHrs);
-          localStorage.setItem("clockMinutes",clockMnt);
+        if(clockMnt === 30){
+          setClockHrs(clockHrs + 0.25);
+        }
 
-          if(clockMnt > 40){
-            setClockHrsAftr(clockHrsAftr + 1);
-            setClockHrs(clockHrs + 1);
-            setClockMnt(0);
-            setClockMntAftr(0);
-          }
+        if(clockMnt === 45){
+          setClockHrs(clockHrs + 0.25)
+        }
 
-          if(clockHrs > 23){
-            setClockHrs(0);
-            setClockHrsAftr(0);
+        if(clockMnt > 57){
+          setClockHrs(clockHrs + 0.25);
+          setClockMnt(0);
+        }
+
+        if(clockHrs > 23){
+          setClockHrs(0);
+          if(counter === 0){
+            setHari("Senin")
+            setCounter(counter + 1);
+          }else if(counter === 1){
+            setHari("Selasa");
+            setCounter(counter + 1);
+          }else if(counter === 2){
+            setHari("Rabu");
+            setCounter(counter + 1);
+          }else if(counter === 3){
+            setHari("Kamis");
+            setCounter(counter + 1);
+          }else if(counter === 4){
+            setHari("Jumat");
+            setCounter(counter + 1);
+          }else if(counter === 5){
+            setHari("Sabtu");
+            setCounter(counter + 1);
           }
         }
+      }else if(trueTrigger){
+        setClockMntAftr(clockMntAftr + 1.5);
+        setClockMnt(clockMntAftr);
+        setClockHrs(clockHrsAftr);
+        setCounter(counterAftr);
+
+        localStorage.setItem("clockHours",clockHrs);
+        localStorage.setItem("clockMinutes",clockMnt);
+        localStorage.setItem("counter",counter);
+        localStorage.setItem("hari",hari);
+
+        if(clockMnt === 15){
+          setClockHrs(clockHrs + 0.25);
+          setClockHrsAftr(clockHrsAftr + 0.25)
+        }
+
+        if(clockMnt === 30){
+          setClockHrs(clockHrs + 0.25);
+          setClockHrsAftr(clockHrsAftr + 0.25)
+        }
+
+        if(clockMnt === 45){
+          setClockHrs(clockHrs + 0.25);
+          setClockHrsAftr(clockHrsAftr + 0.25);
+        }
+
+        if(clockMnt > 57){
+          setClockHrsAftr(clockHrsAftr + 0.25);
+          setClockHrs(clockHrs + 0.25);
+          setClockMnt(0);
+          setClockMntAftr(0);
+        }
+
+        if(clockHrs > 23){
+          setClockHrs(0);
+          setClockHrsAftr(0);
+          if(counterAftr === 0){
+            setHari("Senin")
+            setCounter(counter + 1);
+            setCounterAftr(counterAftr + 1);
+          }else if(counterAftr === 1){
+            setHari("Selasa");
+            setCounter(counter + 1);
+            setCounterAftr(counterAftr + 1);
+          }else if(counterAftr === 2){
+            setHari("Rabu");
+            setCounter(counter + 1);
+            setCounterAftr(counterAftr + 1);
+          }else if(counterAftr === 3){
+            setHari("Kamis");
+            setCounter(counter + 1);
+            setCounterAftr(counterAftr + 1);
+          }else if(counterAftr === 4){
+            setHari("Jumat");
+            setCounter(counter + 1);
+            setCounterAftr(counterAftr + 1);
+          }else if(counterAftr === 5){
+            setHari("Sabtu");
+            setCounter(0);
+            setCounterAftr(0);
+          }
+        }
+      }
         
-    },7000)
+    },1000)
 
     return()=>clearInterval(clock);
   });
@@ -133,6 +217,27 @@ const GamePage = () => {
             break;
     }
   },[namaChar])
+
+  //Disable button
+  useEffect(()=>{
+    var disButton = setInterval(function(){
+      if(clockHrs > 17 || clockHrs < 7){
+        setDisableKmps(true);
+      }else if(clockHrs > 7 || clockHrs < 17){
+        setDisableKmps(false);
+      }
+
+      if(clockHrs > 21 || clockHrs <= 8){
+        setDisableKafe(true);
+        setDisableMrkt(true)
+      }else if(clockHrs > 8 || clockHrs <= 21){
+        setDisableKafe(false);
+        setDisableMrkt(false);
+      }
+
+      clearInterval(disButton);
+    },1000)
+  })
 
   function Laper(){
     setMakan(makan - 3);
@@ -197,9 +302,9 @@ const GamePage = () => {
         <div className='semuaKecualiChar'>
           <div className='goto'>
             <h3 className="labelGo">Go To:</h3>
-            <button className='buttonGo' onClick={KampusGo}>Kampus</button><br />
-            <button className='buttonGo'>Kafe</button>
-            <button className='buttonGo'>Supermarket</button>
+            <button className='buttonGo' onClick={KampusGo} disabled={disableKmps}>Kampus</button><br />
+            <button className='buttonGo' disabled={disableKafe}>Kafe</button>
+            <button className='buttonGo' disabled={disableMrkt}>Supermarket</button>
           </div>
           <div className="clockAndBar">
             <div className='jam'>
@@ -220,6 +325,9 @@ const GamePage = () => {
             </div>
             <div className='jurusan'>
               <h4 className='jurusan'>Jurusan: {jurusanKau}</h4>
+            </div>
+            <div className='hari'>
+              <h4 className='hari'>Hari: {hari}</h4>
             </div>
             <div className='icons'>
               <FaHotdog className='icon1'/><br />

@@ -8,25 +8,57 @@ const Kampus = () => {
 
   const [clockHrs, setClockHrs] = useState(JSON.parse(localStorage.getItem("clockHours")));
   const [clockMnt, setClockMnt] = useState(JSON.parse(localStorage.getItem("clockMinutes")));
+  const jurusan = localStorage.getItem("jurusanKamu");
+  const [counter, setCounter] = useState(JSON.parse(localStorage.getItem("counter")));
+  const [hari, setHari] = useState("Minggu");
 
   useEffect(()=>{
     var clock;
     clock = setInterval(()=>{
 
-        setClockMnt(clockMnt + 10);
+        setClockMnt(clockMnt + 1.5);
 
         localStorage.setItem("clockHours",clockHrs);
         localStorage.setItem("clockMinutes",clockMnt);
+        localStorage.setItem("counter",counter);
       
-        if(clockMnt > 40){
-          setClockHrs(clockHrs + 1);
+        if(clockMnt === 15){
+          setClockHrs(clockHrs + 0.25)
+        }
+
+        if(clockMnt === 30){
+          setClockHrs(clockHrs + 0.25);
+        }
+
+        if(clockMnt === 45){
+          setClockHrs(clockHrs + 0.25)
+        }
+        
+        if(clockMnt > 57){
+          setClockHrs(clockHrs + 0.25);
           setClockMnt(0);
         }
 
         if(clockHrs > 23){
           setClockHrs(0);
         }
-    },7000)
+
+        if(counter === 0){
+          setHari("Minggu");
+        }else if(counter === 1){
+          setHari("Senin");
+        }else if(counter === 2){
+          setHari("Selasa");
+        }else if(counter === 3){
+          setHari("Rabu");
+        }else if(counter === 4){
+          setHari("Kamis");
+        }else if(counter === 5){
+          setHari("Jumat");
+        }else if(counter === 6){
+          setHari("Sabtu");
+        }
+    },1000)
 
     return()=>clearInterval(clock);
   });
@@ -68,6 +100,10 @@ const Kampus = () => {
         <div className="number number10">10</div>
         <div className="number number11">11</div>
         <div className="number number12">12</div>
+      </div>
+      <div>
+        <h4>Jurusan: {jurusan}</h4>
+        <h4>Hari: {hari}</h4>
       </div>
     </div>
   )

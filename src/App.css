@@ -223,6 +223,13 @@ body{
   text-align: center;
 }
 
+.hari{
+  position: relative;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
 .clockAndBar{
   background-color: rgb(72, 72, 187, 0.6);
   padding: 1em;
