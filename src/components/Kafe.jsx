@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ProgressBar } from 'react-bootstrap';
 import { FaHotdog, FaBed, FaGamepad, FaBookReader } from "react-icons/fa";
 import { SliderSetting } from './SliderSetting';
 import { useNavigate } from 'react-router-dom';
+import { MakanNasi, btnEnabled, btnDisabled, MakanBuah, Belajar } from './ProgressBar';
 
 const Kafe = () => {
     const dataHour = useRef();
@@ -15,6 +15,11 @@ const Kafe = () => {
     const [disableKmps, setDisableKmps] = useState(false);
     const [disableRest, setDisableRest] = useState(false);
 
+    var makanVal = JSON.parse(localStorage.getItem("makan"));
+    var tidurVal = JSON.parse(localStorage.getItem("tidur"));
+    var belajarVal = JSON.parse(localStorage.getItem("knowledge"));
+    var mainVal = JSON.parse(localStorage.getItem("sanity"));
+
     const [background, setBackground] = useState("");
   
     const namaKau = localStorage.getItem("namaKamu");
@@ -22,10 +27,6 @@ const Kafe = () => {
     const namaChar = localStorage.getItem("karakter");
     const [urlImg, setUrlImg] = useState("");
   
-    const [makan, setMakan] = useState(50);
-    const [turu, setTuru] = useState(50);
-    const [belajar, setBelajar] = useState(0);
-    const [mabar, setMabar] = useState(50);
   
     const [clockHrs, setClockHrs] = useState(JSON.parse(localStorage.getItem("clockHours")));
     const [clockMnt, setClockMnt] = useState(JSON.parse(localStorage.getItem("clockMinutes")));
@@ -241,18 +242,24 @@ const Kafe = () => {
                 <FaGamepad className='icon4'/><br />
               </div>
               <div className='bar'>
-                <ProgressBar className='progress' variant="success" now={makan} />
-                <ProgressBar variant="danger" now={turu} />
-                <ProgressBar variant="warning" now={belajar} />
-                <ProgressBar variant="info" now={mabar} />
+                <progress id='makanBar' className="progress" value={makanVal} max='100'></progress>
+                <progress id='tidurBar' className="progress" value={tidurVal} max='100'></progress>
+                <progress id='belajarBar' className="progress" value={belajarVal} max='100'></progress>
+                <progress id='mainBar' className="progress" value={mainVal} max='100'></progress>
               </div>
             </div>
             <div className='buttons'>
               <div className='makanDanTuru'>
-                <button className='makanBtn button btn btn-success btn-outline-dark'>Makan</button><br />
+                <button className='makanBtn button btn btn-success btn-outline-dark' data-bs-target='#collapseTarget' data-bs-toggle='collapse' id='makanBtn'>Makan</button><br />
+                <div className='collapse' id='collapseTarget'>
+                  <label><img src={require('../img/Ramen.png')} className='iconMakan' alt='nasiYa'/></label>
+                  <button className='buttonNest btn btn-warning' id='nasi'onClick={function(){setTimeout(MakanNasi, 3000);btnDisabled();}}>Ramen</button><br />
+                  <label><img src={require('../img/Steak.png')} className='iconMakan' alt='buah' /></label>
+                  <button className='buttonNest btn btn-warning' id='buah' onClick={function(){setTimeout(MakanBuah, 3000);btnDisabled();}}>Steak</button><br />
+                </div>
               </div>
               <div className='belajarDanMain'>
-                <button className='belajarBtn button btn btn-warning btn-outline-secondary'>Nugas</button><br />
+                <button className='belajarBtn button btn btn-warning btn-outline-secondary' id='btnBljr' onClick={function(){setTimeout(Belajar, 3000);btnDisabled();}}>Nugas</button><br />
               </div>
             </div>
           </div>

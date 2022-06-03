@@ -297,8 +297,10 @@ body{
 
 .progress{
   margin-top: 2em;
+  appearance: none;
   height: 1.6em;
   margin-bottom: 1em;
+  width: 100%;
 }
 
 .jam{
@@ -448,4 +450,18 @@ body{
 
 .labelGo{
   color: white;
+}
+
+.buttonNest{
+  margin-top: 0.5em;
+  width: 5em;
+  justify-content: center;
+  position: relative;
+}
+
+.iconMakan{
+  width: 30px;
+  height: auto;
+  margin-right: 0.3em;
+  margin-top: 0.2em;
 }

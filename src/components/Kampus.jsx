@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ProgressBar } from 'react-bootstrap';
 import { FaHotdog, FaBed, FaGamepad, FaBookReader } from "react-icons/fa";
 import { SliderSetting } from './SliderSetting';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +6,11 @@ import { useNavigate } from 'react-router-dom';
 const Kampus = () => {
   const dataHour = useRef();
   const dataMnt = useRef();
+
+  var makanVal = JSON.parse(localStorage.getItem("makan"));
+  var tidurVal = JSON.parse(localStorage.getItem("tidur"));
+  var belajarVal = JSON.parse(localStorage.getItem("knowledge"));
+  var mainVal = JSON.parse(localStorage.getItem("sanity"));
 
   const rumahNav = useNavigate();
   const kafeNav = useNavigate();
@@ -16,11 +20,6 @@ const Kampus = () => {
   const jurusanKau = localStorage.getItem("jurusanKamu");
   const namaChar = localStorage.getItem("karakter");
   const [urlImg, setUrlImg] = useState("");
-
-  const [makan, setMakan] = useState(50);
-  const [turu, setTuru] = useState(50);
-  const [belajar, setBelajar] = useState(0);
-  const [mabar, setMabar] = useState(50);
 
   const [clockHrs, setClockHrs] = useState(JSON.parse(localStorage.getItem("clockHours")));
   const [clockMnt, setClockMnt] = useState(JSON.parse(localStorage.getItem("clockMinutes")));
@@ -202,10 +201,10 @@ const Kampus = () => {
               <FaGamepad className='icon4'/><br />
             </div>
             <div className='bar'>
-              <ProgressBar className='progress' variant="success" now={makan} />
-              <ProgressBar variant="danger" now={turu} />
-              <ProgressBar variant="warning" now={belajar} />
-              <ProgressBar variant="info" now={mabar} />
+              <progress id='makanBar' className="progress" value={makanVal} max='100'></progress>
+              <progress id='tidurBar' className="progress" value={tidurVal} max='100'></progress>
+              <progress id='belajarBar' className="progress" value={belajarVal} max='100'></progress>
+              <progress id='mainBar' className="progress" value={mainVal} max='100'></progress>
             </div>
           </div>
           <div className='buttons'>

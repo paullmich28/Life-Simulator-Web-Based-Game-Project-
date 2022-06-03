@@ -1,17 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import { useState } from 'react';
-import { ProgressBar } from 'react-bootstrap';
+import { ProgressBar, Collapse, Popover } from 'react-bootstrap';
 import { FaBookReader, FaHotdog, FaBed, FaGamepad } from 'react-icons/fa';
 import { SliderSetting } from './SliderSetting';
 import { useNavigate } from 'react-router-dom';
+import { MakanNasi, btnEnabled, btnDisabled, MakanKripik, MakanBuah, Tidur, Belajar, MainYu } from './ProgressBar';
 
 const GamePage = () => {
-  //Variable progress bar
-  const [makan, setMakan] = useState(50);
-  const [turu, setTuru] = useState(50);
-  const [belajar, setBelajar] = useState(0);
-  const [mabar, setMabar] = useState(50);
-
   //variable jam
   const [clockHrs, setClockHrs] = useState(0);
   const [clockMnt, setClockMnt] = useState(0);
@@ -35,6 +30,11 @@ const GamePage = () => {
   const [urlImg, setUrlImg] = useState("");
   
   var trueTrigger = JSON.parse(localStorage.getItem("trueTrigger"));
+
+  var makanVal = JSON.parse(localStorage.getItem("makan"));
+  var tidurVal = JSON.parse(localStorage.getItem("tidur"));
+  var belajarVal = JSON.parse(localStorage.getItem("knowledge"));
+  var mainVal = JSON.parse(localStorage.getItem("sanity"));
 
   //variabel sapa
   const [sapa, setSapa] = useState("");
@@ -101,8 +101,8 @@ const GamePage = () => {
         }
       }else if(trueTrigger){
         setClockMntAftr(clockMntAftr + 1.5);
-        setClockMnt(clockMntAftr);
         setClockHrs(clockHrsAftr);
+        setClockMnt(clockMntAftr);
         setCounter(counterAftr);
         setHariAftr(hariAftr);
 
@@ -245,35 +245,6 @@ const GamePage = () => {
       clearInterval(disButton);
     },1000)
   })
-
-  function Laper(){
-    setMakan(makan - 3);
-
-    if(makan < 15){
-      alert("Makan dulu gih");
-    }
-  } 
-
-  function Ngantuk(){
-    setTuru(turu - 3);
-
-    if(turu < 15){
-      alert("Tidur dulu gih");
-    }
-  }
-
-  function Bljr(){
-    setBelajar(belajar - 3);
-
-  }
-
-  function StressReminder(){
-    setMabar(mabar - 3);
-
-    if(mabar < 15){
-      alert("Kebanyakan belajar ya? Main dulu sana");
-    }
-  }
   
   function setClock(){
     const minutesRatio = clockMnt /60
@@ -312,6 +283,11 @@ const GamePage = () => {
     e.preventDefault();
     localStorage.setItem("trueTrigger", 1)
   }
+
+
+  //20
+  //35
+  //45
 
   return (
     <div className={background}>
@@ -354,20 +330,28 @@ const GamePage = () => {
               <FaGamepad className='icon4'/><br />
             </div>
             <div className='bar'>
-              <ProgressBar className='progress' variant="success" now={makan} id="makanBang"/>
-              <ProgressBar variant="danger" now={turu} />
-              <ProgressBar variant="warning" now={belajar} />
-              <ProgressBar variant="info" now={mabar} />
+              <progress id='makanBar' className="progress" value={trueTrigger ? makanVal : 50} max='100'></progress>
+              <progress id='tidurBar' className="progress" value={trueTrigger ? tidurVal : 50} max='100'></progress>
+              <progress id='belajarBar' className="progress" value={trueTrigger ? belajarVal : 0} max='100'></progress>
+              <progress id='mainBar' className="progress" value={trueTrigger ? mainVal : 50} max='100'></progress>
             </div>
           </div>
           <div className='buttons'>
             <div className='makanDanTuru'>
-              <button className='makanBtn button btn btn-success btn-outline-dark'>Makan</button><br />
-              <button className='turuBtn button btn btn-danger btn-outline-dark'>Tidur</button>
+              <button className='makanBtn button btn btn-success btn-outline-dark' data-bs-target='#collapseTarget' data-bs-toggle='collapse' id='makanBtn'>Makan</button><br />
+              <div className='collapse' id='collapseTarget'>
+                <label><img src={require('../img/Nasi.png')} className='iconMakan' alt='nasiYa'/></label>
+                <button className='buttonNest btn btn-warning' id='nasi'onClick={function(){setTimeout(MakanNasi, 3000);btnDisabled();}}>Nasi</button><br />
+                <label><img src={require('../img/Keripik.png')} className='iconMakan' alt='keripik' /></label>
+                <button className='buttonNest btn btn-warning' id='keripik' onClick={function(){setTimeout(MakanKripik, 1500);btnDisabled();}}>Snack</button><br />
+                <label><img src={require('../img/Buah.png')} className='iconMakan' alt='buah' /></label>
+                <button className='buttonNest btn btn-warning' id='buah' onClick={function(){setTimeout(MakanBuah, 2000);btnDisabled();}}>Buah</button><br />
+              </div>
+              <button className='turuBtn button btn btn-danger btn-outline-dark' id='btnTdr' onClick={function(){setTimeout(Tidur, 3000); btnDisabled()}}>Tidur</button>
             </div>
             <div className='belajarDanMain'>
-              <button className='belajarBtn button btn btn-warning btn-outline-secondary'>Belajar</button><br />
-              <button className='mainBtn button btn btn-info btn-outline-secondary'>Main</button>
+              <button className='belajarBtn button btn btn-warning btn-outline-secondary' id='btnBljr' onClick={function(){setTimeout(Belajar, 3000);btnDisabled()}}>Belajar</button><br />
+              <button className='mainBtn button btn btn-info btn-outline-secondary' id='btnMaen' onClick={function(){setTimeout(MainYu, 3000);btnDisabled()}}>Main</button>
             </div>
           </div>
         </div>
