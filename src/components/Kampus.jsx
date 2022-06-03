@@ -222,7 +222,6 @@ const Kampus = () => {
         </div>
       </div>
     </div>
-    
   )
 }
 

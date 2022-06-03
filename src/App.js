@@ -5,6 +5,7 @@ import GamePage from './components/GamePage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Kampus from './components/Kampus';
 import Kafe from './components/Kafe';
+import Mall from './components/Mall';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/gamepage' element={<GamePage />} />
         <Route path='/kampus' element={<Kampus />} />
         <Route path='/kafe' element={<Kafe />} />
+        <Route path='/mall' element={<Mall />} />
       </Routes>
     </BrowserRouter>
   );

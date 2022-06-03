@@ -4,7 +4,6 @@ import { ProgressBar } from 'react-bootstrap';
 import { FaBookReader, FaHotdog, FaBed, FaGamepad } from 'react-icons/fa';
 import { SliderSetting } from './SliderSetting';
 import { useNavigate } from 'react-router-dom';
-import NewsUpdate from './NewsUpdate';
 
 const GamePage = () => {
   //Variable progress bar
