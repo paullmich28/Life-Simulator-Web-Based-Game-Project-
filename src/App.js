@@ -4,6 +4,7 @@ import LoadingScreen from './components/LoadingScreen';
 import GamePage from './components/GamePage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Kampus from './components/Kampus';
+import Kafe from './components/Kafe';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path='/loading' element={<LoadingScreen />} />
         <Route path='/gamepage' element={<GamePage />} />
         <Route path='/kampus' element={<Kampus />} />
+        <Route path='/kafe' element={<Kafe />} />
       </Routes>
     </BrowserRouter>
   );

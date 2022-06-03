@@ -46,6 +46,8 @@ const GamePage = () => {
 
   //variabel buat navigate
   const kampusNav = useNavigate();
+  const kafeNav = useNavigate();
+  const mallNav = useNavigate();
 
   //Jam
   useEffect(()=>{
@@ -58,8 +60,6 @@ const GamePage = () => {
         localStorage.setItem("clockMinutes",clockMnt);
         localStorage.setItem("hari",hari);
         localStorage.setItem("counter",counter)
-      
-        
 
         if(clockMnt === 15){
           setClockHrs(clockHrs + 0.25)
@@ -105,6 +105,7 @@ const GamePage = () => {
         setClockMnt(clockMntAftr);
         setClockHrs(clockHrsAftr);
         setCounter(counterAftr);
+        setHariAftr(hariAftr);
 
         localStorage.setItem("clockHours",clockHrs);
         localStorage.setItem("clockMinutes",clockMnt);
@@ -138,26 +139,32 @@ const GamePage = () => {
           setClockHrsAftr(0);
           if(counterAftr === 0){
             setHari("Senin")
+            setHariAftr("Senin");
             setCounter(counter + 1);
             setCounterAftr(counterAftr + 1);
           }else if(counterAftr === 1){
             setHari("Selasa");
+            setHariAftr("Selasa");
             setCounter(counter + 1);
             setCounterAftr(counterAftr + 1);
           }else if(counterAftr === 2){
             setHari("Rabu");
+            setHariAftr("Rabu");
             setCounter(counter + 1);
             setCounterAftr(counterAftr + 1);
           }else if(counterAftr === 3){
             setHari("Kamis");
+            setHariAftr("Kamis");
             setCounter(counter + 1);
             setCounterAftr(counterAftr + 1);
           }else if(counterAftr === 4){
             setHari("Jumat");
+            setHariAftr("Jumat");
             setCounter(counter + 1);
             setCounterAftr(counterAftr + 1);
           }else if(counterAftr === 5){
             setHari("Sabtu");
+            setHariAftr("Sabtu");
             setCounter(0);
             setCounterAftr(0);
           }
@@ -222,16 +229,16 @@ const GamePage = () => {
   //Disable button
   useEffect(()=>{
     var disButton = setInterval(function(){
-      if(clockHrs > 17 || clockHrs < 7){
+      if((clockHrs >= 17 || clockHrs < 7) || hari === "Minggu"){
         setDisableKmps(true);
-      }else if(clockHrs > 7 || clockHrs < 17){
+      }else if((clockHrs >= 7 || clockHrs < 17) || hari !== "Minggu"){
         setDisableKmps(false);
       }
 
-      if(clockHrs > 21 || clockHrs <= 8){
+      if(clockHrs >= 21 || clockHrs < 8){
         setDisableKafe(true);
         setDisableMrkt(true)
-      }else if(clockHrs > 8 || clockHrs <= 21){
+      }else if(clockHrs >= 8 || clockHrs < 21){
         setDisableKafe(false);
         setDisableMrkt(false);
       }
@@ -295,6 +302,16 @@ const GamePage = () => {
       localStorage.setItem("trueTrigger", 1)
   }
 
+  function KafeGo(e){
+    kafeNav('/kafe');
+    e.preventDefault();
+  }
+
+  function MallGo(e){
+    mallNav('/mall');
+    e.preventDefault();
+  }
+
   return (
     <div className={background}>
       <div className='container'>
@@ -302,9 +319,9 @@ const GamePage = () => {
         <div className='semuaKecualiChar'>
           <div className='goto'>
             <h3 className="labelGo">Go To:</h3>
-            <button className='buttonGo' onClick={KampusGo} disabled={disableKmps}>Kampus</button><br />
-            <button className='buttonGo' disabled={disableKafe}>Kafe</button>
-            <button className='buttonGo' disabled={disableMrkt}>Supermarket</button>
+            <button className='buttonGo btn btn-primary btn-outline-warning' onClick={KampusGo} disabled={disableKmps}>Kampus</button><br />
+            <button className='buttonGo btn btn-light btn-outline-primary' onClick={KafeGo} disabled={disableKafe}>Kafe</button>
+            <button className='buttonGo btn btn-secondary btn-outline-dark' onClick={MallGo} disabled={disableMrkt}>Mall</button>
           </div>
           <div className="clockAndBar">
             <div className='jam'>
@@ -327,7 +344,7 @@ const GamePage = () => {
               <h4 className='jurusan'>Jurusan: {jurusanKau}</h4>
             </div>
             <div className='hari'>
-              <h4 className='hari'>Hari: {hari}</h4>
+              <h4 className='hari'>Hari: {trueTrigger ? hariAftr : hari}</h4>
             </div>
             <div className='icons'>
               <FaHotdog className='icon1'/><br />
@@ -356,7 +373,6 @@ const GamePage = () => {
         <div className='headerGamepage' >
           <img src={urlImg} className="gambarCharYeu" alt="char" />
         </div>
-        <NewsUpdate />
       </div>
     </div>
   )

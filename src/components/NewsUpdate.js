@@ -1,34 +1,29 @@
 import React, { useEffect } from 'react';
-import axios, { Axios } from 'axios';
 import { useState } from 'react';
+import axios from 'axios';
 
 const NewsUpdate = (props) => {
-    const [newsJSON, setNewsJSON] = useState([]);
+    const [newsJSON, setNewsJSON] = useState({});
     const [newsTitle, setNewsTitle] = useState("");
     const [newsContent, setNewsContent] = useState("");
     const [index, setIndex] = useState(0);
 
     const url = "https://newsapi.org/v2/top-headlines?country=id&apiKey=7c7194165604443c85a876fb29e5825c";
-    
-    function AxiosGet(){
-        
 
+    useEffect(() => {
         axios.get(url).then((res)=>{
-            setNewsJSON(res.data.articles);
-
-            const length = res.data.articles.length;
-            if(length <= 20){
-                setIndex(index + 1)
-            }else{
-                setIndex(0);
-            }
+            res.json();
+        }).then((data)=>{
+            setNewsJSON(data.articles);
+        }).catch((err)=>{
+            console.error("ERROR");
         })
-    }
-
+    });
 
     return (
         <div>
-            <button onClick={AxiosGet}>Fetch URL</button>
+            <h1>{newsTitle !== "" ? newsTitle : "Loading"}</h1>
+            <p>{newsContent !== "" ? newsContent : "Loading"}</p>
         </div>
     )
 }
