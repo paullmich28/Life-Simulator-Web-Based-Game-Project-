@@ -24,7 +24,7 @@ const Kampus = () => {
 
   const [clockHrs, setClockHrs] = useState(JSON.parse(localStorage.getItem("clockHours")));
   const [clockMnt, setClockMnt] = useState(JSON.parse(localStorage.getItem("clockMinutes")));
-  const [counter, setCounter] = useState(JSON.parse(localStorage.getItem("counter")));
+  const counter = JSON.parse(localStorage.getItem("counter"));
 
   const [hari, setHari] = useState("Minggu");
 
