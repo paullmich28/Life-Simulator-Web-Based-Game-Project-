@@ -1,4 +1,8 @@
-<div class="aktivitas container-fluid mb-3 mt-3 text-center">
+import "./styles.css";
+
+export default function buttonAction() {
+  return (
+    <div class="aktivitas container-fluid mb-3 mt-3 text-center">
             <div class="row">
                 <div class="groupBtn col-md-12 mb-2">
                     <button id="btnMakan" class="btn btn-primary" onclick="makanGambar(); setTimeout(makan, 2000); disable(); ">Makan & Minum</button>
@@ -134,3 +138,5 @@
         document.getElementById("btnMain").disabled = true;
         document.getElementById("btnBljr").disabled = true;
     }
+  );
+}
